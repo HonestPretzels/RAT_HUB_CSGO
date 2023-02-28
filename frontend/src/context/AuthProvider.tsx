@@ -22,7 +22,7 @@ const AuthProvider = ({ children }: { children: any }) => {
 	const loginUser = async (username: string, password: string) => {
 		console.log(process.env);
 		const response = await fetch(
-			`${process.env["BACKEND_URL"]}/api/token/`,
+			`${process.env["REACT_APP_BACKEND_URL"]}/api/auth/token/`,
 			{
 				method: "POST",
 				headers: {
@@ -52,7 +52,7 @@ const AuthProvider = ({ children }: { children: any }) => {
 		password2: string
 	) => {
 		const response = await fetch(
-			`${process.env["BACKEND_URL"]}/api/register/`,
+			`${process.env.REACT_APP_BACKEND_URL}/api/auth/register/`,
 			{
 				method: "POST",
 				headers: {

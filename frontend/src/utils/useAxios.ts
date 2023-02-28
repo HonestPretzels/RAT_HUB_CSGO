@@ -5,7 +5,7 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { User } from "./types";
 
-const baseURL = `${process.env["BACKEND_URL"]}/api`;
+const baseURL = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const useAxios = () => {
 	const { authTokens, setUser, setAuthTokens } = useContext(AuthContext);
@@ -21,7 +21,7 @@ const useAxios = () => {
 
 		if (!isExpired) return req;
 
-		const response = await axios.post(`${baseURL}/token/refresh/`, {
+		const response = await axios.post(`${baseURL}/auth/token/refresh/`, {
 			refresh: authTokens.refresh,
 		});
 
