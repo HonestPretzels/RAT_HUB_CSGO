@@ -1,10 +1,11 @@
 import { createContext } from "react";
+import { User } from "../utils/types";
 
 type AuthTokens = { access: string; refresh: string };
 
 export type AuthContextStore = {
-	user: string | null;
-	setUser: (user: string) => void;
+	user: User | null;
+	setUser: (user: User) => void;
 	authTokens: AuthTokens;
 	setAuthTokens: (tokens: AuthTokens) => void;
 	registerUser: (

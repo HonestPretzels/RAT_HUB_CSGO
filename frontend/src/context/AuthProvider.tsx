@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import AuthContext, { AuthContextStore } from "./AuthContext";
+import { User } from "../utils/types";
 
-export const AuthProvider = ({ children }: { children: any }) => {
+const AuthProvider = ({ children }: { children: any }) => {
 	const [authTokens, setAuthTokens] = useState(() =>
 		localStorage.getItem("authTokens")
 			? JSON.parse(localStorage.getItem("authTokens") as string)
 			: null
 	);
-	const [user, setUser] = useState<string | null>(() =>
+	const [user, setUser] = useState<User | null>(() =>
 		localStorage.getItem("authTokens")
 			? jwt_decode(localStorage.getItem("authTokens") as string)
 			: null
@@ -19,16 +20,20 @@ export const AuthProvider = ({ children }: { children: any }) => {
 	const history = useHistory();
 
 	const loginUser = async (username: string, password: string) => {
-		const response = await fetch("http://127.0.0.1:8000/api/token/", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				username,
-				password,
-			}),
-		});
+		console.log(process.env);
+		const response = await fetch(
+			`${process.env["BACKEND_URL"]}/api/token/`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					username,
+					password,
+				}),
+			}
+		);
 		const data = await response.json();
 
 		if (response.status === 200) {
@@ -46,17 +51,20 @@ export const AuthProvider = ({ children }: { children: any }) => {
 		password: string,
 		password2: string
 	) => {
-		const response = await fetch("http://127.0.0.1:8000/api/register/", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				username,
-				password,
-				password2,
-			}),
-		});
+		const response = await fetch(
+			`${process.env["BACKEND_URL"]}/api/register/`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					username,
+					password,
+					password2,
+				}),
+			}
+		);
 		if (response.status === 201) {
 			history.push("/login");
 		} else {
@@ -94,3 +102,5 @@ export const AuthProvider = ({ children }: { children: any }) => {
 		</AuthContext.Provider>
 	);
 };
+
+export default AuthProvider;
