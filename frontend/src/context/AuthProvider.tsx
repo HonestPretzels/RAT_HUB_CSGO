@@ -76,7 +76,7 @@ const AuthProvider = ({ children }: { children: any }) => {
 		setAuthTokens(null);
 		setUser(null);
 		localStorage.removeItem("authTokens");
-		history.push("/");
+		history.push("/login");
 	};
 
 	const contextData: AuthContextStore = {
