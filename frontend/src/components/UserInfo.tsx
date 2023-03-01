@@ -1,10 +1,11 @@
+import { Box, Heading } from "@chakra-ui/react";
 import { User } from "../utils/types";
 
 function UserInfo({ user }: { user: User }) {
 	return (
-		<div>
-			<h1>Hello, {user.username}</h1>
-		</div>
+		<Box>
+			<Heading size="md">Hello, {user.username}</Heading>
+		</Box>
 	);
 }
 
