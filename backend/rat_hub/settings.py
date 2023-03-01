@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'token_auth',
+    'rat_strats'
 ]
 
 MIDDLEWARE = [
