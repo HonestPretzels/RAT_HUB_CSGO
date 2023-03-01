@@ -28,7 +28,7 @@ export default function RegisterPage() {
 	};
 	return (
 		<Flex
-			minH={"80vh"}
+			minH={"100%"}
 			align={"center"}
 			justify={"center"}
 			bg={useColorModeValue("gray.50", "gray.800")}
