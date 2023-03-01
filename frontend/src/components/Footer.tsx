@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { FaGithub } from "react-icons/fa";
+import { SiPug } from "react-icons/si";
 
 const SocialButton = ({
 	children,
@@ -61,7 +62,6 @@ export default function Footer() {
 				justify={{ base: "center", md: "space-between" }}
 				align={{ base: "center", md: "center" }}
 			>
-				<Text>Created by HonestPretzels</Text>
 				<Stack direction={"row"} spacing={6}>
 					<SocialButton
 						label={"Github"}
@@ -69,7 +69,14 @@ export default function Footer() {
 					>
 						<FaGithub />
 					</SocialButton>
+					<SocialButton
+						label={"Puggies"}
+						href={"https://puggies.jayden.codes/app"}
+					>
+						<SiPug />
+					</SocialButton>
 				</Stack>
+				<Text>made with &#128153; in Canada</Text>
 			</Container>
 		</Box>
 	);
