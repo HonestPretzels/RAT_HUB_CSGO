@@ -20,7 +20,8 @@ class GetStrats(generics.ListAPIView):
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
-        '/api/strats/create/',
         '/api/strats/',
+        '/api/strats/create/',
+        '/api/strats/list/',
     ]
     return Response(routes)
