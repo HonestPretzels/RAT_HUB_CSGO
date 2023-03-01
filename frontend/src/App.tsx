@@ -1,9 +1,4 @@
-import {
-	Box,
-	ChakraProvider,
-	ColorModeScript,
-	useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 import "./index.css";
 import Footer from "./components/Footer";

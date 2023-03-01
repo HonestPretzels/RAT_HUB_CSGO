@@ -4,12 +4,10 @@ import {
 	FormControl,
 	FormLabel,
 	Input,
-	Checkbox,
 	Stack,
 	Link,
 	Button,
 	Heading,
-	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
