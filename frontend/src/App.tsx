@@ -22,22 +22,20 @@ function App() {
 		<ChakraProvider theme={theme}>
 			<ColorModeScript initialColorMode={theme.config.initialColorMode} />
 			<Router>
-				<Box bg={useColorModeValue("gray.100", "gray.900")}>
-					<AuthProvider>
-						<Navbar />
-						<Switch>
-							<PrivateRoute
-								component={ProtectedPage}
-								path="/protected"
-								exact
-							/>
-							<Route component={Login} path="/login" />
-							<Route component={Register} path="/register" />
-							<Route component={Home} path="/" />
-						</Switch>
-					</AuthProvider>
-					<Footer />
-				</Box>
+				<AuthProvider>
+					<Navbar />
+					<Switch>
+						<PrivateRoute
+							component={ProtectedPage}
+							path="/protected"
+							exact
+						/>
+						<Route component={Login} path="/login" />
+						<Route component={Register} path="/register" />
+						<Route component={Home} path="/" />
+					</Switch>
+				</AuthProvider>
+				<Footer />
 			</Router>
 		</ChakraProvider>
 	);

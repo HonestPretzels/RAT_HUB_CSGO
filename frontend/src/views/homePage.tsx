@@ -1,3 +1,4 @@
+import { Box, Heading } from "@chakra-ui/react";
 import { useContext } from "react";
 import UserInfo from "../components/UserInfo";
 import AuthContext from "../context/AuthContext";
@@ -5,10 +6,10 @@ import AuthContext from "../context/AuthContext";
 const Home = () => {
 	const { user } = useContext(AuthContext);
 	return (
-		<section>
+		<Box className="box">
 			{user && <UserInfo user={user} />}
-			<h1>You are on home page!</h1>
-		</section>
+			<Heading size="sm">You are on home page!</Heading>
+		</Box>
 	);
 };
 
