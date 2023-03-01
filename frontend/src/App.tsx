@@ -9,7 +9,10 @@ import AuthProvider from "./context/AuthProvider";
 import Home from "./views/homePage";
 import Login from "./views/loginPage";
 import Register from "./views/registerPage";
+import StratList from "./views/stratListPage";
+import StratView from "./views/stratViewPage";
 import theme from "./theme/theme";
+import StratCreate from "./views/stratCreatePage";
 
 function App() {
 	return (
@@ -20,10 +23,19 @@ function App() {
 					<AuthProvider>
 						<Navbar />
 						<Switch>
-							{/* TODO: Make an actual login required page */}
 							<PrivateRoute
-								component={Home}
-								path="/protected"
+								component={StratList}
+								path="/strats"
+								exact
+							/>
+							<PrivateRoute
+								component={StratView}
+								path="/strats/:id"
+								exact
+							/>
+							<PrivateRoute
+								component={StratCreate}
+								path="/strats/create"
 								exact
 							/>
 							<Route component={Login} path="/login" />
