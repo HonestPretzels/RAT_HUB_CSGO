@@ -14,7 +14,6 @@ import AuthProvider from "./context/AuthProvider";
 import Home from "./views/homePage";
 import Login from "./views/loginPage";
 import Register from "./views/registerPage";
-import ProtectedPage from "./views/ProtectedPage";
 import theme from "./theme/theme";
 
 function App() {
@@ -26,8 +25,9 @@ function App() {
 					<AuthProvider>
 						<Navbar />
 						<Switch>
+							{/* TODO: Make an actual login required page */}
 							<PrivateRoute
-								component={ProtectedPage}
+								component={Home}
 								path="/protected"
 								exact
 							/>
