@@ -1,15 +1,19 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Stack } from "@chakra-ui/react";
 import { useContext } from "react";
 import UserInfo from "../components/UserInfo";
 import AuthContext from "../context/AuthContext";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 const Home = () => {
-	const { user } = useContext(AuthContext);
 	return (
-		<Box className="box">
-			{user && <UserInfo user={user} />}
-			<Heading size="sm">You are on home page!</Heading>
-		</Box>
+		<Flex minH={"100%"} align={"center"} justify={"center"}>
+			<Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+				<Heading size="sm">We only got one thing for you</Heading>
+				<Button as={ReactRouterLink} to="/strats">
+					Strats
+				</Button>
+			</Stack>
+		</Flex>
 	);
 };
 
