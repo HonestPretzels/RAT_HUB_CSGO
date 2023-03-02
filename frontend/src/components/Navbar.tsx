@@ -18,7 +18,7 @@ import {
 	HStack,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import AuthContext from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const NavLink = ({ to, children }: { to: string; children: ReactNode }) => (
 	<Link

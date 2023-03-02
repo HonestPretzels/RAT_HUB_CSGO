@@ -1,8 +1,27 @@
-import { useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
-import AuthContext, { AuthContextStore } from "./AuthContext";
 import { User } from "../utils/types";
+
+type AuthTokens = { access: string; refresh: string };
+
+export type AuthContextStore = {
+	user: User | null;
+	setUser: (user: User) => void;
+	authTokens: AuthTokens;
+	setAuthTokens: (tokens: AuthTokens) => void;
+	registerUser: (
+		username: string,
+		password: string,
+		password2: string
+	) => void;
+	loginUser: (username: string, password: string) => void;
+	logoutUser: () => void;
+};
+
+export const AuthContext = createContext<AuthContextStore>(
+	undefined as unknown as AuthContextStore
+);
 
 const AuthProvider = ({ children }: { children: any }) => {
 	const [authTokens, setAuthTokens] = useState(() =>

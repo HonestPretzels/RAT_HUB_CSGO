@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
-import AuthProvider from "./context/AuthProvider";
+import AuthProvider from "./context/AuthContext";
 import Home from "./views/homePage";
 import Login from "./views/loginPage";
 import Register from "./views/registerPage";

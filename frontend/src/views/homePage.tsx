@@ -1,7 +1,4 @@
-import { Box, Button, Flex, Heading, Stack } from "@chakra-ui/react";
-import { useContext } from "react";
-import UserInfo from "../components/UserInfo";
-import AuthContext from "../context/AuthContext";
+import { Button, Flex, Heading, Stack } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 const Home = () => {
