@@ -22,26 +22,28 @@ function App() {
 				<Box minH="100vh">
 					<AuthProvider>
 						<Navbar />
-						<Switch>
-							<PrivateRoute
-								component={StratList}
-								path="/strats"
-								exact
-							/>
-							<PrivateRoute
-								component={StratView}
-								path="/strats/:id"
-								exact
-							/>
-							<PrivateRoute
-								component={StratCreate}
-								path="/strats/create"
-								exact
-							/>
-							<Route component={Login} path="/login" />
-							<Route component={Register} path="/register" />
-							<Route component={Home} path="/" />
-						</Switch>
+						<Box minH="86.6vh">
+							<Switch>
+								<PrivateRoute
+									component={StratList}
+									path="/strats"
+									exact
+								/>
+								<PrivateRoute
+									component={StratView}
+									path="/strats/:id"
+									exact
+								/>
+								<PrivateRoute
+									component={StratCreate}
+									path="/strats/create"
+									exact
+								/>
+								<PrivateRoute component={Home} path="/" exact />
+								<Route component={Login} path="/login" />
+								<Route component={Register} path="/register" />
+							</Switch>
+						</Box>
 						<Footer />
 					</AuthProvider>
 				</Box>
