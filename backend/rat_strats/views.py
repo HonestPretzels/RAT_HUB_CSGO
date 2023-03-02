@@ -17,6 +17,10 @@ class GetStrats(generics.ListAPIView):
     serializer_class = StratSerializer
     queryset = Strat.objects.all()
 
+class GetSingleStrat(generics.RetrieveAPIView):
+    serializer_class = StratSerializer
+    queryset = Strat.objects.all()
+
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
