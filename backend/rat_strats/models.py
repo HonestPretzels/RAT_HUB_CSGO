@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -8,6 +9,7 @@ MAP_CHOICES = [("de_vertigo", "de_vertigo"), ("de_nuke", "de_nuke"), ("de_overpa
 class Strat(models.Model):
     name = models.CharField(max_length=512, null=False, blank=False)
     map = models.CharField(max_length=256, choices=MAP_CHOICES, null=False, blank=False)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     
     players_required = models.IntegerField(default=1)
     smokes_required = models.IntegerField(default=0)
