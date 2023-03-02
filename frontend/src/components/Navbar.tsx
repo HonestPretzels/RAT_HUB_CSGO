@@ -50,7 +50,7 @@ export default function NavBar() {
 			user
 				? [
 						{ label: "Home", to: "/" },
-						{ label: "Some Page", to: "/protected" },
+						{ label: "Strats", to: "/strats" },
 				  ]
 				: [
 						{ label: "Login", to: "/login" },
