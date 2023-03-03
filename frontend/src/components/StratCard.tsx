@@ -8,22 +8,15 @@ import {
 	Image,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { Strat } from "../utils/types";
 
 export interface StratCardProps {
-	imageLink: string;
-	label: string;
-	successes: number;
-	failures: number;
-	id: number;
+	strat: Strat;
 }
 
-function StratCard({
-	imageLink,
-	label,
-	successes,
-	failures,
-	id,
-}: StratCardProps) {
+function StratCard({ strat }: StratCardProps) {
+	const { cover_image, failures, successes, id, name } = strat;
+
 	const successRate =
 		failures + successes === 0 ? 0 : successes / (failures + successes);
 	const history = useHistory();
@@ -47,7 +40,7 @@ function StratCard({
 						height={230}
 						width={282}
 						objectFit={"cover"}
-						src={imageLink}
+						src={cover_image}
 					/>
 				</Box>
 				<Stack pt={4} align={"center"}>
@@ -56,7 +49,7 @@ function StratCard({
 						fontFamily={"body"}
 						fontWeight={500}
 					>
-						{label}
+						{name}
 					</Heading>
 					<Stack direction="row">
 						<Text>Success Rate: </Text>

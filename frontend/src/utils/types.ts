@@ -10,6 +10,7 @@ export type User = {
 
 export type Strat = {
 	cover_image: string;
+	video: string;
 	name: string;
 	successes: number;
 	failures: number;

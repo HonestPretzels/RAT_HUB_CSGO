@@ -1,13 +1,15 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import StratCard from "../components/StratCard";
 import { StratContext } from "../context/StratContext";
+import { Strat } from "../utils/types";
 
 const StratListPage = () => {
-	const { strats, getStratsList } = useContext(StratContext);
+	const [strats, setStrats] = useState<Strat[]>([]);
+	const { getStratsList } = useContext(StratContext);
 
 	useEffect(() => {
-		getStratsList();
+		getStratsList().then((s) => setStrats(s));
 	}, [getStratsList]);
 
 	return (
@@ -19,13 +21,7 @@ const StratListPage = () => {
 		>
 			{strats.map((strat) => (
 				<GridItem key={strat.id}>
-					<StratCard
-						imageLink={strat.cover_image}
-						label={strat.name}
-						successes={strat.successes}
-						failures={strat.failures}
-						id={strat.id}
-					/>
+					<StratCard strat={strat} />
 				</GridItem>
 			))}
 		</Grid>
