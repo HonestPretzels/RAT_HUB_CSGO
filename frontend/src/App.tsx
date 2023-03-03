@@ -13,6 +13,7 @@ import StratList from "./views/stratListPage";
 import StratView from "./views/stratViewPage";
 import theme from "./theme/theme";
 import StratCreate from "./views/stratCreatePage";
+import StratProvider from "./context/StratContext";
 
 function App() {
 	return (
@@ -21,30 +22,39 @@ function App() {
 			<Router>
 				<Box minH="100vh">
 					<AuthProvider>
-						<Navbar />
-						<Box minH="86.6vh">
-							<Switch>
-								<PrivateRoute
-									component={StratList}
-									path="/strats"
-									exact
-								/>
-								<PrivateRoute
-									component={StratView}
-									path="/strats/:id"
-									exact
-								/>
-								<PrivateRoute
-									component={StratCreate}
-									path="/strats/create"
-									exact
-								/>
-								<PrivateRoute component={Home} path="/" exact />
-								<Route component={Login} path="/login" />
-								<Route component={Register} path="/register" />
-							</Switch>
-						</Box>
-						<Footer />
+						<StratProvider>
+							<Navbar />
+							<Box minH="86.6vh">
+								<Switch>
+									<PrivateRoute
+										component={StratList}
+										path="/strats"
+										exact
+									/>
+									<PrivateRoute
+										component={StratView}
+										path="/strats/:id"
+										exact
+									/>
+									<PrivateRoute
+										component={StratCreate}
+										path="/strats/create"
+										exact
+									/>
+									<PrivateRoute
+										component={Home}
+										path="/"
+										exact
+									/>
+									<Route component={Login} path="/login" />
+									<Route
+										component={Register}
+										path="/register"
+									/>
+								</Switch>
+							</Box>
+							<Footer />
+						</StratProvider>
 					</AuthProvider>
 				</Box>
 			</Router>

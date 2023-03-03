@@ -7,3 +7,11 @@ export type User = {
 	username: string;
 	email: string;
 };
+
+export type Strat = {
+	cover_image: string;
+	name: string;
+	successes: number;
+	failures: number;
+	id: number;
+};

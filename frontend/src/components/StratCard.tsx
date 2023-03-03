@@ -24,7 +24,8 @@ function StratCard({
 	failures,
 	id,
 }: StratCardProps) {
-	const successRate = successes / (failures + successes);
+	const successRate =
+		failures + successes === 0 ? 0 : successes / (failures + successes);
 	const history = useHistory();
 
 	return (
