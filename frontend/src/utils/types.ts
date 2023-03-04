@@ -15,4 +15,10 @@ export type Strat = {
 	successes: number;
 	failures: number;
 	id: number;
+	created_by: { username: string };
+	map: string;
+	flashbangs_required: number;
+	smokes_required: number;
+	grenades_required: number;
+	molotovs_required: number;
 };
