@@ -10,10 +10,12 @@ export type User = {
 
 export type Strat = {
 	cover_image: string;
-	video: string;
+	video: string | null;
 	name: string;
 	successes: number;
 	failures: number;
+	attempts: number;
+	abandons: number;
 	id: number;
 	created_by: { username: string };
 	map: string;
@@ -21,4 +23,5 @@ export type Strat = {
 	smokes_required: number;
 	grenades_required: number;
 	molotovs_required: number;
+	description: string;
 };

@@ -1,6 +1,7 @@
 import {
 	AspectRatio,
 	Box,
+	Button,
 	CircularProgress,
 	Divider,
 	Flex,
@@ -40,8 +41,8 @@ const StratView = ({ id }: StratViewProps) => {
 			{!strat ? (
 				<CircularProgress isIndeterminate />
 			) : (
-				<SimpleGrid gap={4} columns={7} px={4}>
-					<GridItem colSpan={2}>
+				<SimpleGrid gap={4} columns={12} px={4} pt={4}>
+					<GridItem colSpan={3}>
 						<Stack direction="column">
 							<Heading size="xl" textAlign={"center"}>
 								{strat.name} - {strat.map}
@@ -93,25 +94,77 @@ const StratView = ({ id }: StratViewProps) => {
 							</Stack>
 						</Stack>
 					</GridItem>
-					<GridItem colSpan={3}>
+					<GridItem colSpan={6}>
 						<Flex justify="center">
-							<AspectRatio width="42vw" ratio={16 / 9}>
-								<iframe
-									src={strat.video}
-									title={strat.name}
-									allowFullScreen
-								/>
-							</AspectRatio>
+							{strat.video ? (
+								<AspectRatio width="50vw" ratio={16 / 9}>
+									<iframe
+										src={strat.video}
+										title={strat.name}
+										allowFullScreen
+									/>
+								</AspectRatio>
+							) : (
+								<Heading size="xl" textAlign={"center"}>
+									No Video Available
+								</Heading>
+							)}
 						</Flex>
 					</GridItem>
-					<GridItem colSpan={2} px={4}>
-						<Heading size="sm" textAlign={"center"}>
-							{JSON.stringify(strat)}
+					<GridItem colSpan={3} px={4}>
+						<Stack direction="column">
+							<Heading size="lg" textAlign={"center"}>
+								Description
+							</Heading>
+							<Divider />
+							<Text size="md" textAlign={"center"}>
+								{strat.description}
+							</Text>
+						</Stack>
+					</GridItem>
+					<GridItem colSpan={4}>
+						<Button
+							minH="20vh"
+							minW="100%"
+							bgColor={"green.500"}
+							_hover={{ bgColor: "green.300" }}
+						>
+							<Heading textColor={"green.900"}>Success</Heading>
+						</Button>
+					</GridItem>
+					<GridItem colSpan={4}>
+						<Button
+							minH="20vh"
+							minW="100%"
+							bgColor={"yellow.500"}
+							_hover={{ bgColor: "yellow.200" }}
+						>
+							<Heading textColor={"yellow.900"}>Abandon</Heading>
+						</Button>
+					</GridItem>
+					<GridItem colSpan={4}>
+						<Button
+							minH="20vh"
+							minW="100%"
+							bgColor={"red.500"}
+							_hover={{ bgColor: "red.300" }}
+						>
+							<Heading textColor={"red.900"}>Failure</Heading>
+						</Button>
+					</GridItem>
+					<GridItem colSpan={4}>
+						<Heading textAlign="center" size="md">
+							Total Successes: {strat.successes}
 						</Heading>
 					</GridItem>
-					<GridItem colSpan={7}>
-						<Heading size="sm" textAlign={"center"}>
-							{JSON.stringify(strat)}
+					<GridItem colSpan={4}>
+						<Heading textAlign="center" size="md">
+							Total Abandons: {strat.abandons}
+						</Heading>
+					</GridItem>
+					<GridItem colSpan={4}>
+						<Heading textAlign="center" size="md">
+							Total Failures: {strat.failures}
 						</Heading>
 					</GridItem>
 				</SimpleGrid>
