@@ -23,5 +23,6 @@ export type Strat = {
 	smokes_required: number;
 	grenades_required: number;
 	molotovs_required: number;
+	players_required: number;
 	description: string;
 };

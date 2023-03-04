@@ -23,6 +23,7 @@ import {
 	GiGrenade,
 	GiMolotov,
 } from "react-icons/gi";
+import { FaUser } from "react-icons/fa";
 
 interface StratViewProps {
 	id: string;
@@ -90,6 +91,20 @@ const StratView = ({ id }: StratViewProps) => {
 								<GiGrenade size="10%" />{" "}
 								<Heading size="md" textAlign={"right"}>
 									{strat.grenades_required} Grenade Required
+								</Heading>
+							</Stack>
+							<Stack
+								direction="row"
+								justify="center"
+								align="center"
+							>
+								<FaUser size="10%" />{" "}
+								<Heading size="md" textAlign={"right"}>
+									{strat.players_required}{" "}
+									{strat.players_required > 1
+										? "Players"
+										: "Player"}{" "}
+									Required
 								</Heading>
 							</Stack>
 						</Stack>
