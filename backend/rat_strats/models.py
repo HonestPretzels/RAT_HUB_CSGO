@@ -23,8 +23,8 @@ class Strat(models.Model):
     abandons = models.IntegerField(default=0)
 
     description = models.CharField(max_length=2048, blank=True, null=True)
-    cover_image = models.ImageField(upload_to="")
-    video = models.FileField(upload_to="", validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
+    cover_image = models.ImageField(upload_to="", null=True, blank=True)
+    video = models.FileField(upload_to="", validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])], null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Strats"

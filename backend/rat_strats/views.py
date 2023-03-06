@@ -20,9 +20,10 @@ class GetStrats(generics.ListAPIView):
     serializer_class = StratSerializer
     queryset = Strat.objects.all()
 
-class GetSingleStrat(generics.RetrieveAPIView):
+class GetSingleStrat(generics.RetrieveUpdateAPIView):
     serializer_class = StratSerializer
     queryset = Strat.objects.all()
+
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -30,5 +31,6 @@ def getRoutes(request):
         '/api/strats/',
         '/api/strats/create/',
         '/api/strats/list/',
+        '/api/strats/<id>/',
     ]
     return Response(routes)
