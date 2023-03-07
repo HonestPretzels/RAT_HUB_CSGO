@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from rest_framework import generics
 from .models import Strat
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializer import StratSerializer, StratCreateSerializer
+from .serializer import StratSerializer, StratCreateSerializer, StratModifySerializer
 # Create your views here.
 
 class CreateStrat(generics.CreateAPIView):
@@ -20,8 +20,12 @@ class GetStrats(generics.ListAPIView):
     serializer_class = StratSerializer
     queryset = Strat.objects.all()
 
-class GetSingleStrat(generics.RetrieveUpdateAPIView):
+class GetSingleStrat(generics.RetrieveAPIView):
     serializer_class = StratSerializer
+    queryset = Strat.objects.all()
+
+class ModifyStrat(generics.UpdateAPIView):
+    serializer_class = StratModifySerializer
     queryset = Strat.objects.all()
 
 
@@ -32,5 +36,6 @@ def getRoutes(request):
         '/api/strats/create/',
         '/api/strats/list/',
         '/api/strats/<id>/',
+        '/api/strats/modify/<id>/',
     ]
     return Response(routes)

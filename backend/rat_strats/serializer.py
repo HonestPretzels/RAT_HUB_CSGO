@@ -18,6 +18,13 @@ class StratCreateSerializer(serializers.ModelSerializer):
         fields="__all__"
         extra_kwargs = {'created_by': {'default': serializers.CurrentUserDefault(), 'read_only': True}}
 
+class StratModifySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Strat
+        exclude= ["cover_image", "video"]
+        extra_kwargs = {'created_by': {'default': serializers.CurrentUserDefault(), 'read_only': True}}
+
 class StratSerializer(serializers.ModelSerializer):
 
     cover_image = serializers.ImageField()

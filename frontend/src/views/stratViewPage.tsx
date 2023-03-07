@@ -30,12 +30,38 @@ interface StratViewProps {
 }
 
 const StratView = ({ id }: StratViewProps) => {
-	const { getStrat } = useContext(StratContext);
+	const { getStrat, modifyStrat } = useContext(StratContext);
 	const [strat, setStrat] = useState<Strat | undefined>(undefined);
 
 	useEffect(() => {
 		getStrat(parseInt(id, 10)).then((s) => setStrat(s));
 	}, [getStrat, id]);
+
+	const handleStratIncrement = (
+		incrementType: "success" | "abandon" | "failure"
+	) => {
+		if (!strat) return;
+		const newStrat: Strat = { ...strat, cover_image: null, video: null };
+		switch (incrementType) {
+			case "success":
+				newStrat.successes += 1;
+				break;
+
+			case "abandon":
+				newStrat.abandons += 1;
+				break;
+
+			case "failure":
+				newStrat.failures += 1;
+				break;
+
+			default:
+				break;
+		}
+		modifyStrat(parseInt(id, 10), newStrat).then(() =>
+			getStrat(parseInt(id, 10)).then((s) => setStrat(s))
+		);
+	};
 
 	return (
 		<Box>
@@ -143,6 +169,7 @@ const StratView = ({ id }: StratViewProps) => {
 							minW="100%"
 							bgColor={"green.500"}
 							_hover={{ bgColor: "green.300" }}
+							onClick={() => handleStratIncrement("success")}
 						>
 							<Heading textColor={"green.900"}>Success</Heading>
 						</Button>
@@ -153,6 +180,7 @@ const StratView = ({ id }: StratViewProps) => {
 							minW="100%"
 							bgColor={"yellow.500"}
 							_hover={{ bgColor: "yellow.200" }}
+							onClick={() => handleStratIncrement("abandon")}
 						>
 							<Heading textColor={"yellow.900"}>Abandon</Heading>
 						</Button>
@@ -163,6 +191,7 @@ const StratView = ({ id }: StratViewProps) => {
 							minW="100%"
 							bgColor={"red.500"}
 							_hover={{ bgColor: "red.300" }}
+							onClick={() => handleStratIncrement("failure")}
 						>
 							<Heading textColor={"red.900"}>Failure</Heading>
 						</Button>

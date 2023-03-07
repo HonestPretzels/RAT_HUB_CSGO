@@ -7,6 +7,7 @@ export type StratContextStore = {
 	getStratsList: () => Promise<Strat[]>;
 	getStrat: (id: number) => Promise<Strat>;
 	createStrat: (strat: UploadStrat) => void;
+	modifyStrat: (id: number, strat: Strat) => Promise<void>;
 };
 
 export const StratContext = createContext<StratContextStore>(
@@ -36,7 +37,17 @@ const StratProvider = ({ children }: { children: any }) => {
 		}
 	};
 
-	// TODO: this will have to be refined for file upload etc.
+	const modifyStrat = async (id: number, strat: Strat) => {
+		const response = await axios.put(`/strats/modify/${id}`, strat, {
+			headers: { "Content-Type": "multipart/form-data" },
+		});
+		if (response.status !== 200) {
+			alert("Couldn't modify the strat");
+			return Promise.reject();
+		}
+		return Promise.resolve();
+	};
+
 	const createStrat = async (strat: UploadStrat) => {
 		const response = await axios.post("/strats/create/", strat, {
 			headers: { "Content-Type": "multipart/form-data" },
@@ -53,6 +64,7 @@ const StratProvider = ({ children }: { children: any }) => {
 		getStratsList,
 		getStrat,
 		createStrat,
+		modifyStrat,
 	};
 
 	return (
