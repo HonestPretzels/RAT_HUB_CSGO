@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { useContext, useState } from "react";
-import AuthContext from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 export default function LoginPage() {
 	const { loginUser } = useContext(AuthContext);
