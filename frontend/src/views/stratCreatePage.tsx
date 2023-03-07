@@ -1,10 +1,8 @@
 import {
-	Box,
 	Button,
 	Center,
 	FormControl,
 	FormLabel,
-	Heading,
 	Input,
 	NumberDecrementStepper,
 	NumberIncrementStepper,
@@ -16,7 +14,9 @@ import {
 	Text,
 	Textarea,
 } from "@chakra-ui/react";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
+import { StratContext } from "../context/StratContext";
+import { UploadStrat } from "../utils/types";
 
 const MAPS = [
 	"de_mirage",
@@ -31,14 +31,16 @@ const MAPS = [
 const StratCreatePage = () => {
 	const [coverImage, setCoverImage] = useState<File>();
 	const [video, setVideo] = useState<File>();
-	const [name, setName] = useState<string>();
-	const [description, setDescription] = useState<string>();
-	const [map, setMap] = useState<string>();
+	const [name, setName] = useState<string>("");
+	const [description, setDescription] = useState<string>("");
+	const [map, setMap] = useState<string>("");
 	const [playersRequired, setPlayersRequired] = useState<number>(1);
 	const [flashbangsRequired, setFlashbangsRequired] = useState<number>(0);
 	const [smokesRequired, setSmokesRequired] = useState<number>(0);
 	const [molotovsRequired, setMolotovsRequired] = useState<number>(0);
 	const [grenadesRequired, setGrenadesRequired] = useState<number>(0);
+
+	const { createStrat } = useContext(StratContext);
 
 	const handleCoverImageChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
@@ -67,7 +69,19 @@ const StratCreatePage = () => {
 			alert("Missing a map!");
 			return;
 		}
-		console.log(coverImage, video, name, map, description);
+		const newStrat: UploadStrat = {
+			cover_image: coverImage,
+			video: video,
+			name,
+			map,
+			description,
+			smokes_required: smokesRequired,
+			players_required: playersRequired,
+			molotovs_required: molotovsRequired,
+			grenades_required: grenadesRequired,
+			flashbangs_required: flashbangsRequired,
+		};
+		createStrat(newStrat);
 	};
 
 	return (

@@ -1,12 +1,12 @@
 import { createContext } from "react";
 import { useHistory } from "react-router-dom";
-import { Strat } from "../utils/types";
+import { Strat, UploadStrat } from "../utils/types";
 import useAxios from "../utils/useAxios";
 
 export type StratContextStore = {
 	getStratsList: () => Promise<Strat[]>;
 	getStrat: (id: number) => Promise<Strat>;
-	createStrat: (strat: Strat) => void;
+	createStrat: (strat: UploadStrat) => void;
 };
 
 export const StratContext = createContext<StratContextStore>(
@@ -37,9 +37,12 @@ const StratProvider = ({ children }: { children: any }) => {
 	};
 
 	// TODO: this will have to be refined for file upload etc.
-	const createStrat = async (strat: Strat) => {
-		const response = await axios.post("/strats/create", strat);
-		if (response.status === 200) history.push(`strats/${response.data.id}`);
+	const createStrat = async (strat: UploadStrat) => {
+		const response = await axios.post("/strats/create/", strat, {
+			headers: { "Content-Type": "multipart/form-data" },
+		});
+		if (response.status === 201)
+			history.push(`/strats/${response.data.id}`);
 		else {
 			alert("Couldn't find the strats");
 			return Promise.reject();

@@ -26,3 +26,16 @@ export type Strat = {
 	players_required: number;
 	description: string;
 };
+
+export type UploadStrat = {
+	cover_image: File;
+	video: File;
+	name: string;
+	map: string;
+	flashbangs_required: number;
+	smokes_required: number;
+	grenades_required: number;
+	molotovs_required: number;
+	players_required: number;
+	description: string;
+};
