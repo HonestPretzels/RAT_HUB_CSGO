@@ -32,14 +32,13 @@ function App() {
 										exact
 									/>
 									<PrivateRoute
-										component={StratView}
-										path="/strats/:id"
-										exact
-									/>
-									<PrivateRoute
 										component={StratCreate}
 										path="/strats/create"
 										exact
+									/>
+									<PrivateRoute
+										component={StratView}
+										path="/strats/:id"
 									/>
 									<PrivateRoute
 										component={Home}

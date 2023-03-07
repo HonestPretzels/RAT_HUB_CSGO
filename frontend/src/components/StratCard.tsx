@@ -35,13 +35,17 @@ function StratCard({ strat }: StratCardProps) {
 				onClick={() => history.push(`/strats/${id}`)}
 			>
 				<Box rounded={"lg"} pos={"relative"} height={"230px"}>
-					<Image
-						rounded={"lg"}
-						height={230}
-						width={282}
-						objectFit={"cover"}
-						src={cover_image}
-					/>
+					{cover_image ? (
+						<Image
+							rounded={"lg"}
+							height={230}
+							width={282}
+							objectFit={"cover"}
+							src={cover_image}
+						/>
+					) : (
+						<div />
+					)}
 				</Box>
 				<Stack pt={4} align={"center"}>
 					<Heading
