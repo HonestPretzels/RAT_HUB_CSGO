@@ -24,7 +24,9 @@ class Strat(models.Model):
 
     description = models.CharField(max_length=2048, blank=True, null=True)
     cover_image = models.ImageField(upload_to="", null=True, blank=True)
-    video = models.FileField(upload_to="", validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])], null=True, blank=True)
+
+    # Should be youtube embed links
+    video = models.CharField(max_length=2048, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Strats"

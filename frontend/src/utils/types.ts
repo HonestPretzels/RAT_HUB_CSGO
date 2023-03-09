@@ -28,8 +28,7 @@ export type Strat = {
 };
 
 export type UploadStrat = {
-	cover_image: File;
-	video: File;
+	video: string;
 	name: string;
 	map: string;
 	flashbangs_required: number;
