@@ -63,7 +63,7 @@ ROOT_URLCONF = 'rat_hub.urls'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_SERVE_PORT = 80
+MEDIA_SERVE_PORT = 8020
 
 TEMPLATES = [
     {
